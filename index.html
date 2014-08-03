@@ -17,7 +17,8 @@
 					$.each(data, function(key, value){
 						$.each(value, function(key2, value2){
 							var table = "";
-							table = table + "<table href=\""+ value2["link"] +"\" class='movies'>";
+							table = table + "<a  href=\""+ value2["link"] +"\" >";
+							table = table + "<table class='movies'>";
 							table = table + "<tr>";
 							table = table + "<td class='channel'>";
 							table = table + "<img src=\"" + value2["channel"] + "\" width='100' height='40'>";
@@ -34,6 +35,7 @@
 							table = table + "</td>";
 							table = table + "</tr>";
 							table = table + "</table>";
+							table = table + "</a>";
 							$("#centerDiv").html($("#centerDiv").html() + table);
 						});
 					});
