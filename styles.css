@@ -26,7 +26,6 @@ img:hover {
 	width: 85%;
 	text-align: center;
 	border-bottom: 1px solid #ececec;
-	height:160px;
 	position:static;
 	margin-left: auto ;
   	margin-right: auto ;
@@ -88,7 +87,6 @@ h1.titulo_principal{
 	width: 85%;
 	display: block;
 	border-top: 1px solid #ececec;
-	height:90px;
 	position:static;
 	margin-left: auto ;
   	margin-right: auto ;
