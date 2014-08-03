@@ -13,8 +13,12 @@
 .grid figure img {
 	position: relative;
 	display: block;
-	opacity: 0.7;
+	opacity: 0;
 	min-height: 100%;
+}
+
+figure.effect-zoe:hover img {
+	opacity: 0.7;
 }
 
 .grid figure figcaption {

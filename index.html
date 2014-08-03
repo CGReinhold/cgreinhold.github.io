@@ -17,7 +17,7 @@
 					$.each(data, function(key, value){
 						$.each(value, function(key2, value2){
 							var table = "";
-							table = table + "<table class='movies'>";
+							table = table + "<table href=\""+ value2["link"] +"\" class='movies'>";
 							table = table + "<tr>";
 							table = table + "<td class='channel'>";
 							table = table + "<img src=\"" + value2["channel"] + "\" width='100' height='40'>";
@@ -49,8 +49,6 @@
 				<ul class="lista_menu">
 					<li>Sobre</li>
 					<li>Contato</li>
-					<li>Equipe</li>
-					<li>Anuncie</li>
 				</ul>
 			</div><!--
 		 --><div class="titulo">
@@ -66,7 +64,7 @@
 				<!--<img src="icons/rss-icon.png" class="desaturate">-->
 			</div>
 			<div class="copyright">
-				<p>© 2014 Teste</p>
+				<p>© 2014</p>
 			</div>
 		</div>
 	</body>
