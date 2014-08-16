@@ -1,0 +1,46 @@
+.grid figure {
+	position: relative;
+	overflow: hidden;
+	margin: -0.135em;
+	height: 400px;
+	text-align: center;
+}
+.grid figure img {
+	min-height: 100%;
+}
+.grid figure figcaption {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1.75em;
+	font-family: "Bebas Book", "Trebuchet MS", "Helvetica", "sans-serif";
+	position: absolute;
+	width: 100%;
+}
+figure.effect figcaption {
+	bottom: 0;
+	height: 5em;
+	background: #f0f0f0;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,100%,0);
+	transform: translate3d(0,100%,0);
+}
+figure.effect p {
+	position: absolute;
+	bottom: 0.3em;
+	padding: 0.7em;
+	color: #222;
+	font-size: 350%;
+	opacity: 0;
+}
+figure.effect:hover p {
+	opacity: 1;
+}
+figure.effect:hover figcaption,
+figure.effect:hover h3 {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+figure.effect:hover img {
+	opacity: 0.7;
+}

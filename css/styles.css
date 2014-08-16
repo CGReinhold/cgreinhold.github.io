@@ -1,0 +1,49 @@
+body {background-color:#f6f6f6;}
+
+p, li{
+	font-family: "Trebuchet MS", "Helvetica", "sans-serif";
+	font-size: 20px;
+	color: #cfcfcf;	
+}
+
+li{
+	display: inline;
+	padding-right: 20px;
+}
+
+.half {
+	-webkit-transform:scale(0.6);
+	transform:scale(0.6);
+}
+
+.header,
+.rodape{
+	width: 85%;
+	text-align: center;
+	position:static;
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+h1{
+	font-family: "Bebas Book", "Trebuchet MS", "Helvetica", "sans-serif";
+	font-size: 100px;
+	color: #3f3f3f;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.center{
+	width: 100%;
+	text-align: center;
+	position:static;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #ececec;
+	border-top: 1px solid #ececec;
+}
+
+.movies{
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
+}
