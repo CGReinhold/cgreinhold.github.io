@@ -1,49 +1,29 @@
-body {background-color:#f6f6f6;}
-
+@font-face {
+	font-family: "Bebas Book";
+	src: url(https://dl.dropboxusercontent.com/u/27873575/site%20teste/font/TTF/BebasNeue_Light.ttf) format("truetype");
+}
+body {
+	background-color:#f6f6f6;
+	text-align: center;
+	font-family: "Bebas Book", "Trebuchet MS", "Helvetica", "sans-serif";
+}
 p, li{
 	font-family: "Trebuchet MS", "Helvetica", "sans-serif";
-	font-size: 20px;
+	font-size: 20;
 	color: #cfcfcf;	
 }
-
 li{
 	display: inline;
-	padding-right: 20px;
+	padding: 0 10;
 }
-
 .half {
 	-webkit-transform:scale(0.6);
 	transform:scale(0.6);
 }
-
-.header,
-.rodape{
-	width: 85%;
-	text-align: center;
-	position:static;
-	margin-left: auto ;
-	margin-right: auto ;
-}
-
 h1{
-	font-family: "Bebas Book", "Trebuchet MS", "Helvetica", "sans-serif";
-	font-size: 100px;
+	font-size: 100;
 	color: #3f3f3f;
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
-
-.center{
-	width: 100%;
-	text-align: center;
-	position:static;
-	padding-bottom: 40px;
-	border-bottom: 1px solid #ececec;
-	border-top: 1px solid #ececec;
-}
-
 .movies{
 	display: inline-block;
-	padding-right: 10px;
-	padding-left: 10px;
 }
