@@ -1,0 +1,10 @@
+body {
+	background:-webkit-radial-gradient(circle, #ffffff, #cecece);
+	text-align: center;
+	font-family: "Trebuchet MS", "Helvetica", "sans-serif";
+	font-size: 30px;
+}
+
+.secondDiv{
+	float: left;
+}
