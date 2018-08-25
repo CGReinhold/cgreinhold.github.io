@@ -12,7 +12,7 @@ exclude: ['/automation/', 'README.md', 'LICENSE.txt', 'CNAME']
 title: "XXVI Seminco"
 email: "dsc@furb.br"
 description: "XXVI Seminário de Informática e Computação"
-baseurl: "/seminco"
+baseurl: "/"
 url: "http://www.inf.furb.br/seminco/2017/index.html"
 
 # Organizer Info
