@@ -1,0 +1,15 @@
+<!-- Begin Find Way-->
+<section id="find-way" class="find-way">    
+    <div id="canvas-map" class="canvas-map"></div>
+    <div class="content-wrapper text-left">
+        <ul style="margin-top: 20px; font-size: 20px; margin-left: 5px;">
+            {% for seminario in site.data.seminarios %}
+                <li {% if seminario.width != null %}style="width: {{ seminario.width }};"{% endif %}>
+                    {{seminario.year}} - 
+                    <a href="{{ seminario.link }}" target="_blank">{{seminario.name}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+<!-- End Find Way -->

@@ -1,0 +1,15 @@
+- 
+  group: ""
+  elements: 
+    - {name: "FURB", description: "FURB", link: "https://furb.br/", imageUrl: "furb.svg"}
+- 
+  group: "Apoio"
+  elements: 
+    - {name: "SBC", description: "Sociedade Brasileira de Computação", link: "http://www.sbc.org.br/", imageUrl: "sbc.svg"}
+    - {name: "FAPESC", description: "FAPESC", link: "http://www.fapesc.sc.gov.br/", imageUrl: "fapesc.svg"}
+- 
+  group: "Patrocínio"
+  elements: 
+    - {name: "HBSIS", description: "HBSIS", link: "https://hbsis.com.br/", imageUrl: "hbsis.svg"}
+    - {name: "Senior", description: "Senior", link: "https://www.senior.com.br/", imageUrl: "senior.svg"}
+    - {name: "Philips", description: "Philips", link: "https://www.philips.com.br/", imageUrl: "philips.svg"}

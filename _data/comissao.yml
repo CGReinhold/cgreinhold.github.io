@@ -1,0 +1,28 @@
+- 
+  id: 0
+  name: "Prof. Marcel"
+  surname: "Hugo (Coordenador)"
+  company: ""
+  title: ""
+  thumbnailUrl: marcel.jpg
+- 
+  id: 1
+  name: "Prof. Everaldo Artur"
+  surname: "Grahl"
+  company: ""
+  title: ""
+  thumbnailUrl: everaldo.jpg
+- 
+  id: 2
+  name: "Profa. Luciana"
+  surname: "Pereira de Araujo"
+  company: ""
+  title: ""
+  thumbnailUrl: luciana.jpg
+- 
+  id: 3
+  name: "Prof. Dr. Maurício"
+  surname: "Capobianco Lopes"
+  company: ""
+  title: ""
+  thumbnailUrl: mauricio.jpg

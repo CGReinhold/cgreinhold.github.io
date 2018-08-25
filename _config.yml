@@ -1,0 +1,100 @@
+# Plugins
+gems:
+- jekyll-sitemap
+safe: false
+
+# Build Settings
+markdown: kramdown
+permalink: pretty
+exclude: ['/automation/', 'README.md', 'LICENSE.txt', 'CNAME']
+
+# Site Settings
+title: "XXVI Seminco"
+email: "dsc@furb.br"
+description: "XXVI Seminário de Informática e Computação"
+baseurl: "/seminco"
+url: "http://www.inf.furb.br/seminco/2017/index.html"
+
+# Organizer Info
+organizerName: "DSC FURB"
+organizerAlternateName: "Departamento de Sistemas e Ciência da Computação"
+organizerDescription: ""
+organizerEmail: "dsv@furb.br"
+organizerLogo: "/img/seo/organizer-logo.png"
+organizerLink: "http://www.inf.furb.br/"
+
+# Head
+metaKeywords: "evento, furb, seminco, computacao, sistemas"
+socialImageSrcGooglePlus: "/img/seo/sharing-google-plus.png"
+socialImageSrcTwitter: "/img/seo/sharing-twitter.png"
+socialImageSrcFacebook: "/img/seo/sharing-facebook.png"
+
+
+# Navigation
+navigationLinks:
+ - {permalink: "/", text: "Home"}
+ - {permalink: "/programacao/", text: "Programação"}
+ - {permalink: "/artigos/", text: "Artigos"}
+ - {permalink: "/comissaoOrganizadora/", text: "Comissão Organizadora"}
+ - {permalink: "/seminarios/", text: "Seminários anteriores"}
+ - {permalink: "/participacao/", text: "Participação"}
+
+# Hero Block
+heroImage: "hero.jpg"
+heroTitle: "XXVI SEMINCO"
+eventDate: "Outubro, 2018"
+typeoutTextValues: '""'
+typeoutFallback: ""
+
+# About Block
+aboutTitle: "Sobre a SEMINCO"
+aboutBlock:
+ - {title: "Palestras", image: "conference.jpg", text: "Palestras sobre os temas relevantes da atualidade na área de tecnologia." }
+ - {title: "Mesa redonda", image: "workshop.jpg", text: "Mesa redonda sobre Big Data com participação de pessoas notáveis da área." }
+ - {title: "Artigos Científicos", image: "hackathon.jpg", text: "Tradional apresentação de artigos, fruto de trabalhos de pesquisa, doutorado, mestrado e conclusão de curso." }
+
+# Rockstar Speakers Block
+rockstarSpeakersImage: "rockstar-speakers.jpg"
+rockstarSpeakersCount: 4
+rockstarSpeakersTitle: "Palestrantes"
+rockstarSpeakersButtonText: "Ver todos palestrantes"
+
+# Location Block
+locationBlockTitle: "Local"
+eventLocationName: "Universidade Regional de Blumenau - FURB"
+eventLocationLink: "http://www.furb.br/"
+eventStreetAddress: "R. Antônio da Veiga, 140"
+eventAddressLocality: "Blumenau"
+eventAddressLocalityRegion: "Santa Catarina"
+eventPostalCode: "89030-903"
+eventAddressCountry: "Brasil"
+eventStartTime: "2018-10-25T18:30"
+eventDoorTime: "09:00"
+eventEndTime: "2018-10-25T22:00"
+eventPlaceCoordinates: "-26.9052701, -49.0796034"
+mapCenterCoordinates: "-26.9052701, -49.0796034"
+mapMobileCenterCoordinates: "-26.9052701, -49.0796034"
+
+# Partners Block
+organizersTitle: "Organização"
+
+# Footer
+socialLinks:
+ - {link: "https://twitter.com/furb_oficial", icon: "twitter"}
+ - {link: "https://www.facebook.com/FURBoficial/", icon: "facebook"}
+footerBlocks:
+ -
+  title: "Links"
+  links:
+   - {link: "http://www.furb.br/", text: "FURB"}
+   - {link: "http://dsc.inf.furb.br/", text: "Departamento de Sistemas e Computação"}
+ -
+  title: "Contato"
+  links:
+   - {link: "mailto:dsc@furb.br", text: "dsc@furb.br"}
+
+# Speakers List Block
+showSessions: true
+
+# Seminarios
+seminariosTitle: "Seminários"
