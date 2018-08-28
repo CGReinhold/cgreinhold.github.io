@@ -37,7 +37,7 @@ navigationLinks:
  - {permalink: "/artigos/", text: "Artigos"}
  - {permalink: "/comissaoOrganizadora/", text: "Comissão Organizadora"}
  - {permalink: "/seminarios/", text: "Seminários anteriores"}
- - {permalink: "/participacao/", text: "Participação"}
+ - {permalink: "/participacao/", text: "Inscrição"}
 
 # Hero Block
 heroImage: "hero.jpg"

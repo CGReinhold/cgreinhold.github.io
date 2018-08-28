@@ -33,6 +33,19 @@
                 <div class="clearfix visible-xs"></div>
                 {% endif %} 
                 {% endfor %}
+                <h3>Agradecimentos</h3>
+                {% assign animationDelay = 0 %} {% for judge in site.data.agradecimentos %} 
+                {% assign colWidth = 12 | divided_by: forloop.length %}
+                <div class="judge col-md-{{ colWidth }} col-xs-6 animated hiding" data-animation="fadeInDown" data-delay="{{ animationDelay }}">
+                    <p class="name">{{ judge.name }} {{ judge.surname }}</p>
+                    <span class="title">{{ judge.title }}</span>
+                </div>
+                {% assign animationDelay = animationDelay | plus:500 %} 
+                {% assign check = forloop.index | modulo:2 %} 
+                {% if check == 0 %}
+                <div class="clearfix visible-xs"></div>
+                {% endif %} 
+                {% endfor %}
             </div>
         </div>
     </div>
