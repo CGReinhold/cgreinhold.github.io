@@ -10,6 +10,6 @@
 - 
   group: "Patrocínio"
   elements: 
-    - {name: "HBSIS", description: "HBSIS", link: "https://hbsis.com.br/", imageUrl: "hbsis.svg"}
-    - {name: "Senior", description: "Senior", link: "https://www.senior.com.br/", imageUrl: "senior.svg"}
-    - {name: "Philips", description: "Philips", link: "https://www.philips.com.br/", imageUrl: "philips.svg"}
+    # - {name: "HBSIS", description: "HBSIS", link: "https://hbsis.com.br/", imageUrl: "hbsis.svg"}
+    # - {name: "Senior", description: "Senior", link: "https://www.senior.com.br/", imageUrl: "senior.svg"}
+    # - {name: "Philips", description: "Philips", link: "https://www.philips.com.br/", imageUrl: "philips.svg"}

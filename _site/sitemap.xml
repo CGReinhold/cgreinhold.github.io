@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/artigos/</loc>
+<loc>http://localhost:4000/artigos/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/comissaoOrganizadora/</loc>
+<loc>http://localhost:4000/comissaoOrganizadora/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/</loc>
+<loc>http://localhost:4000/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/participacao/</loc>
+<loc>http://localhost:4000/participacao/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/programacao/</loc>
+<loc>http://localhost:4000/programacao/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/seminarios/</loc>
+<loc>http://localhost:4000/seminarios/</loc>
 </url>
 <url>
-<loc>http://www.inf.furb.br/seminco/2017/index.html/team/</loc>
+<loc>http://localhost:4000/team/</loc>
 </url>
 </urlset>

@@ -1,28 +1,32 @@
 - 
   id: 0
-  name: "Prof. Marcel"
-  surname: "Hugo (Coordenador)"
+  name: "Prof. Andreza"
+  surname: "Sartori (Coordenadora)"
   company: ""
   title: ""
-  thumbnailUrl: marcel.jpg
+  link: "http://lattes.cnpq.br/3277020795353298"
+  thumbnailUrl: andreza.jpg
 - 
   id: 1
-  name: "Prof. Everaldo Artur"
-  surname: "Grahl"
+  name: "Prof. Marcel"
+  surname: "Hugo"
   company: ""
   title: ""
-  thumbnailUrl: everaldo.jpg
+  link: "http://lattes.cnpq.br/7533386704872719"
+  thumbnailUrl: marcel.jpg
 - 
   id: 2
   name: "Profa. Luciana"
   surname: "Pereira de Araujo"
   company: ""
   title: ""
+  link: "http://lattes.cnpq.br/4646552734648125"
   thumbnailUrl: luciana.jpg
 - 
   id: 3
-  name: "Prof. Dr. Maurício"
-  surname: "Capobianco Lopes"
+  name: "Prof. Everaldo Artur"
+  surname: "Grahl"
   company: ""
   title: ""
-  thumbnailUrl: mauricio.jpg
+  link: "http://lattes.cnpq.br/7343454860362043"
+  thumbnailUrl: everaldo.jpg

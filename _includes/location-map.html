@@ -7,6 +7,7 @@
                 <div class="pull-left">
                     <h3>{{ site.locationBlockTitle }}</h3>
                     <ul>
+                        {% if site.eventLocationRoom %}<li>{{ site.eventLocationRoom }}</li>{% endif %}
                         {% if site.eventLocationName %}<li>{{ site.eventLocationName }}</li>{% endif %}
                         <li>{{ site.eventStreetAddress }}, {{ site.eventAddressLocality }}</li>
                         <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>

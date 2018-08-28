@@ -3,52 +3,42 @@
     <div class="content-wrapper">
         <div class="col-lg-10 col-lg-offset-1">
             <div class="row text-left appear-animation-trigger">
-                {% for speaker in site.data.artigos %}
-                <!-- <div class="effect-wrapper appear-animation col-md-4 col-sm-6 col-xs-12">
-                    <div class="lily-effect ribbon-activator">
-                        <div class="lily-head" data-toggle="modal" data-target="#speakerDetail-{{ speaker.id }}">
-                            <figure class="waves-effect waves-block waves-light" style="background-image: url({{ site.baseurl | append: '/img/people/' | append: speaker.thumbnailUrl }})">
-                                <div class="overlay solid-overlay"></div>
-                                {% if speaker.ribbon != null %}
-                                <ul class="ribbon-wrapper">
-                                    {% for ribbon in speaker.ribbon %}
-                                    <li class="{{ ribbon["abbr"] | downcase }}">
-                                        <p class="ribbon abbr">{{ ribbon["abbr"] }}</p>
-                                        <p class="ribbon full-title">{{ ribbon["title"] }}</p>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                                {% if site.showSessions %}
-                                <figcaption>
-                                    <h2 class="name">{{ speaker.name }} <span>{{ speaker.surname }}</span></h2>
-                                    <p class="position">{{ speaker.company }}</p>
-                                </figcaption>
-                                {% endif %}
-                            </figure>
-                        </div>
-                        <div class="lily-bottom">
-                            <ul class="slider">
-                                {% assign sessionsNumber = 0 %}
-                                {% if site.showSessions %} 
-                                    {% for session in site.data.sessions %} 
-                                        {% for session_speaker in session.speakers %} 
-                                            {% if session_speaker == speaker.id %}
-                                            {% assign sessionsNumber = sessionsNumber | plus: 1 %}
-                                                <li class="title slider-item animated fadeInRight hidden">{{ session.title }}</li>
-                                            {% endif %} 
-                                        {% endfor %} 
-                                    {% endfor %} 
-                                {% else %}
-                                    <h2 class="name">{{ speaker.name }} <span>{{ speaker.surname }}</span></h2>
-                                    <p class="position">{{ speaker.company }}</p>
-                                {% endif %}
-                            </ul>
-                            <a href="#" class="slider-next-item {% if sessionsNumber < 2 %}hidden{% endif %}">Next</a>
-                        </div>
-                    </div>
-                </div> -->
-                {% endfor %}
+                    <h1 style="font-size: 34px !important;">Chamada de trabalhos para o XXVI SEMINCO</h1>
+                    <p>O SEMINCO (Seminário de Informática e Computação) é um evento que tem por objetivo divulgar trabalhos técnicos/científicos e promover o intercâmbio entre a comunidade científica e o profissional de informática. Este seminário, promovido pelo Departamento de Sistemas e Computação da Universidade Regional de Blumenau (http://dsc.inf.furb.br/), está recebendo submissões de trabalhos, na forma de painéis (pôsteres).</p>
+                    <h2 style="font-size: 30px;">CONCURSO DE TRABALHOS ACADÊMICOS – PAINEL (PÔSTERES)</h2>
+                    <p>Nesta XXVI edição do SEMINCO, que ocorrerá nos dias 16 e 17 de outubro de 2018, faremos o Concurso de Trabalhos Acadêmicos com a apresentação de trabalhos na forma de painel (pôster), oportunizando visibilidade para trabalhos de iniciação científica ou em desenvolvimento.</p>
+                    
+                    <p>O painel deverá ter 0,90m x 1,20m (largura x altura) e obedecer aos seguintes critérios:</p>
+                    <p>I - O título deverá ser em letras maiúsculas. O tipo da fonte deverá ser simples, permitindo leitura rápida. Abaixo do título deverá aparecer, nesta ordem: Nome dos Autores, Nome do Apresentador (grifado) e Nome do Coordenador/Orientador por último. Na próxima linha deverá constar a Grande Área ou Área Temática do trabalho. Na linha seguinte, deverá constar o Nome do Laboratório (se aplicável), Departamento e Instituição.</p>
+                    <p>II - É importante que todos os recursos visuais disponíveis sejam utilizados na elaboração do painel, para que o mesmo desperte o interesse dos participantes. As informações devem ser organizadas de forma que as ideias centrais do trabalho sejam facilmente apreendidas, com o mínimo de texto e o máximo de figuras, tabelas e quadros. O tamanho de fonte utilizado deverá permitir sua leitura a uma distância mínima de dois metros.</p>
+                    <p>A apresentação do painel e eventual demonstração de resultados ocorrerá no dia 16/10/2018 entre 20h30 e 22h, em sala a ser divulgada pela coordenação do SEMINCO, no Campus I da FURB.</p>
+                    <p>Os apresentadores deverão fixar o painel nos locais e horários indicados pela coordenação do evento. Os autores do trabalho deverão permanecer junto ao mesmo, durante toda a sessão de apresentação para responder às questões dos interessados.</p>
+                    <p>É de responsabilidade exclusiva dos autores a produção, confecção, fixação, exposição e retirada dos painéis. Serão fornecidos biombos para fixação dos painéis.</p>
+                    <p>A inscrição deve ocorrer até dia 26/09/2018, via e-mail para seminco@furb.br, contendo os seguintes dados:</p>
+                    <ul style="list-style: none;">
+                    <li>a) Título do trabalho</li>
+                    <li>b) Nome dos autores</li>
+                    <li>c) Nome do Laboratório (se aplicável), Departamento e Instituição.</li>
+                    <li>d) Nome e endereço de e-mail do apresentador</li>
+                    <li>e) Resumo do trabalho - o resumo deve conter entre 200 e 400 palavras, no idioma português
+                    e deverá apresentar Introdução, Objetivos, Metodologia, Resultados e Conclusão, sem constar e/ou
+                    destacar estes títulos no resumo. O texto deverá ser corrido (sem entrada de parágrafos ou linhas
+                    em branco).</li>
+                    </ul>
+
+                    <p>Todos os painéis inscritos passarão por uma pré-avaliação que terá resultado no dia 03/10/2018 e
+                    devem, preferencialmente, pertencer a uma ou mais das seguintes áreas:</p>
+                    <ul>
+                    <li>Banco de Dados;</li>
+                    <li>Computação Gráfica;</li>
+                    <li>Engenharia de Software;</li>
+                    <li>Informática na Educação;</li>
+                    <li>Inteligência Artificial;</li>
+                    <li>Integração Hardware/Software;</li>
+                    <li>Sistemas de Informação;</li>
+                    <li>Sistemas Operacionais e</li>
+                    <li>Teoria da Computação.</li>
+                    </ul>
             </div> 
         </div>
     </div>
