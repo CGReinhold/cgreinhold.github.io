@@ -45,7 +45,7 @@ layout: compress
             document.write('<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"><\/script>')
         } 
     </script>
-    {% elsif page.permalink == '/logistics/' %}
+    {% elsif page.permalink == '/direcao/' %}
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,geometry"></script>
         <script type="text/javascript">
             var autoDirectionEnabled = {% if site.logisticsMapAutoDirections %} true {% else %} false {% endif %};
@@ -101,27 +101,12 @@ layout: compress
                     }
                 }
             });
-        {% elsif page.permalink == '/logistics/' %}
-            var googleMaps = 'logistics',
+        {% elsif page.permalink == '/direcao/' %}
+            var googleMaps = 'direcao',
                 eventPlace = new google.maps.LatLng({{ site.eventPlaceCoordinates }}),
                 centerMap = new google.maps.LatLng({{ site.logisticsMapCenterCoordinates }}),
                 mobileCenterMap = new google.maps.LatLng({{ site.logisticsMapMobileCenterCoordinates }}),
-                icon = '{{ site.baseurl }}/img/other/map-marker.svg';
-        {% elsif page.permalink == '/hackathon/' %}
-            if ($(window).width() > 767) {
-                var googleMaps = 'hackathon',
-                    eventPlace = new google.maps.LatLng({{ site.hackathonPlaceCoordinates }}),
-                    centerMap = new google.maps.LatLng({{ site.hackathonMapCenterCoordinates }}),
-                    mobileCenterMap = new google.maps.LatLng({{ site.hackathonMapMobileCenterCoordinates }}),
-                    icon = '{{ site.baseurl }}/img/other/map-marker.svg';
-            } else {
-               var staticGoogleMaps = true,
-                eventPlaceCoordinates = '{{ site.hackathonPlaceCoordinates | replace:' ','' }}',
-                centerMapCoordinates = '{{ site.hackathonMapCenterCoordinates | replace:' ','' }}',
-                mobileCenterMapCoordinates = '{{ site.hackathonMapMobileCenterCoordinates | replace:' ','' }}',
-                icon = '{{ site.baseurl | prepend: site.url }}/img/other/map-marker.png';
-            }
-            
+                icon = '{{ site.baseurl }}/img/other/map-marker.svg';            
         {% endif %} 
     </script>
     <script src="{{ "/js/scripts.min.js" | prepend: site.baseurl }}"></script>
