@@ -93,6 +93,7 @@ footerBlocks:
   title: "Contato"
   links:
    - {link: "mailto:dsc@furb.br", text: "dsc@furb.br"}
+   - {link: "mailto:seminco@furb.br", text: "seminco@furb.br"}
 
 # Speakers List Block
 showSessions: true

@@ -8,7 +8,7 @@
                 <h3>Professores</h3>
                 {% assign animationDelay = 0 %} {% for judge in site.data.comissao %} 
                 {% assign colWidth = 12 | divided_by: forloop.length %}
-                <div class="judge col-md-{{ colWidth }} col-xs-6 animated hiding" data-animation="fadeInDown" data-delay="{{ animationDelay }}" onclick="window.open('{{ judge.link }}', '_blank');">
+                <div class="judge col-md-{{ colWidth }} col-xs-6 animated hiding" data-animation="fadeInDown" data-delay="{{ animationDelay }}" onclick="window.open('{{ judge.link }}', '_blank');" style="cursor: pointer;">
                     <div class="flow-img img-circle judge-img" style="background-image: url({{ site.baseurl }}/img/people/{{ judge.thumbnailUrl }})"></div>
                     <p class="name">{{ judge.name }} {{ judge.surname }}</p>
                     <span class="company">{{ judge.company }}</span>
