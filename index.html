@@ -1,14 +1,233 @@
----
-layout: default
-permalink: /
----
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="./CGRCode.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      background-color: #454545;
+      color: white;
+    }
+    header {
+      padding: 50px 50px 0 50px;
+      margin: 0 20px 0 20px;
+    }
+    .main {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      padding: 50px;
+      color: #4D4D4D;
+    }
+    .form {
+      flex: 3;
+      max-width: 800px;
+      padding: 20px;
+      margin: 20px;
+      background-color: white;
+      border-radius: 10px;
+    }
+    .canvas  {
+      flex: 1;
+    }
+    .styling {
+      border-radius: 4px;
+    }
+    .form-group {
+      margin: 5px;
+    }
+    .group-collapse {
+      margin-bottom: 8px;
+    }
+    .group-head {
+      cursor: pointer;
+      display: flex;
+      padding: 5px;
+      color: #4D4D4D;
+      font-size: 14px;
+      font-weight: 700;
+      border-bottom: 1px solid #CCC;
+      position: relative;
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .group-content {
+      display: none;
+    }
+  </style>
+</head>
+<body onload="render()">
+  <header>
+    <h1>
+      CGR Code
+    </h1>
+  </header>
+  <div class="main">
+    <div id="canvas" class="canvas"></div>
+    <div class="form">
+      <form>
+        <div class="form-group">
+          <label for="text">Texto:</label>
+          <input class="form-control form-control-sm" id="text" type="text" value="test" oninput="render()" />
+        </div>
+        <div class="styling">
+          <div class="group-collapse">
+            <div class="group-head" onclick="expandAccordion(this)">
+              <h5>Estilo</h5>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="group-content">
+              <!-- <div class="form-group">
+                <label for="height">Altura:</label>
+                <input class="form-control form-control-sm" id="height" type="range" min="100" max="2000" value="550" oninput="render()" />
+              </div> -->
+              <div class="form-group">
+                <label for="shape">Formato</label>
+                <select class="form-control form-control-sm" id="shape" onchange="render()">
+                  <option value="square">Quadrado</option>
+                  <option value="circle">Círculo</option>
+                  <option value="triangle">Triangulo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="symbols">Símbolos</label>
+                <select class="form-control form-control-sm" id="symbols" onchange="render()">
+                  <option value="squares">Quadrados</option>
+                  <option value="circles">Círculos</option>
+                  <option value="triangles">Triangulos</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="symbolHeight">Tamanho do símbolo:</label>
+                <input class="form-control form-control-sm" id="symbolHeight" type="range" min="1" max="500" value="20" oninput="render()" />
+              </div>
+              <div class="form-group">
+                <label for="symbolMargin">Margem dos símbolos:</label>
+                <input class="form-control form-control-sm" id="symbolMargin" type="range" min="1" max="500" value="30" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="marginY">Margem externa vertical:</label>
+                <input class="form-control form-control-sm" id="marginY" type="range" min="1" max="1000" value="40" oninput="render()" />
+              </div>
+              <div class="form-group">
+                  <label for="marginX">Margem externa horizontal:</label>
+                  <input class="form-control form-control-sm" id="marginX" type="range" min="1" max="1000" value="38" oninput="render()" />
+                </div>
+            </div>
+          </div>
+          <div class="group-collapse">
+            <div class="group-head" onclick="expandAccordion(this)">
+              <h5>Cores</h5>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="group-content">
+              <div class="form-group">
+                <label for="color">Cor dos símbolos:</label>
+                <input class="form-control form-control-sm" id="color" type="color" value="#000000" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="backgroundColor">Cor do background:</label>
+                <input class="form-control form-control-sm" id="backgroundColor" type="color" value="#ffffff" onchange="render()" />
+              </div>
+            </div>
+          </div>
+          <div class="group-collapse">
+            <div class="group-head" onclick="expandAccordion(this)">
+              <h5>Imagem</h5>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="group-content">
+              <div class="form-group">
+                <label for="image">URL da Imagem:</label>
+                <input class="form-control form-control-sm" id="image" type="text" value="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa3%2FCc.logo.circle.svg%2F1024px-Cc.logo.circle.svg.png&f=1" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="imageXMargin">Margem X da imagem:</label>
+                <input class="form-control form-control-sm" id="imageXMargin" type="range" min="1" max="1000" value="90" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="imageYMargin">Margem Y da imagem:</label>
+                <input class="form-control form-control-sm" id="imageYMargin" type="range" min="1" max="1000" value="100" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="imageWidth">Largura da imagem:</label>
+                <input class="form-control form-control-sm" id="imageWidth" type="range" min="10" max="1000" value="150" onchange="render()" />
+              </div>
+              <div class="form-group">
+                <label for="imageHeight">Altura da imagem:</label>
+                <input class="form-control form-control-sm" id="imageHeight" type="range" min="10" max="1000" value="150" onchange="render()" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function expandAccordion(element) {
+      const panel = element.nextElementSibling;
+      const estaAtivo = panel.classList.contains('active');
 
- {% include hero.html %}
+      const actives = document.getElementsByClassName('active');
+      if (actives && actives.length) {
+        for (let i = 0; i < actives.length; i++) {
+          actives[i].style.display = 'none';
+          actives[i].classList.remove('active');
+        }
+      }
 
- {% include about.html %}
+      if (panel && !estaAtivo) {
+        panel.classList.add('active');
+        panel.style.display = 'block';
+      }
+    }
 
- {% include sobre.html %}
+    function render(event) {
+      const text = document.getElementById('text').value;
+      const marginX = Number(document.getElementById('marginY').value);
+      const marginY = Number(document.getElementById('marginX').value);
+      const color = document.getElementById('color').value;
+      const backgroundColor = document.getElementById('backgroundColor').value;
+      const symbols = document.getElementById('symbols').value;
+      const shape = document.getElementById('shape').value;
+      const symbolHeight = Number(document.getElementById('symbolHeight').value);
+      const symbolMargin = Number(document.getElementById('symbolMargin').value);
+      const imageXMargin = Number(document.getElementById('imageXMargin').value);
+      const imageYMargin = Number(document.getElementById('imageYMargin').value);
+      const imageWidth = Number(document.getElementById('imageWidth').value);
+      const imageHeight = Number(document.getElementById('imageHeight').value);
+      const image = document.getElementById('image').value;
 
- {% include location-map.html %}
-
- {% include partners.html %}
+      const code = new CGRCode({ 
+        text,
+        height: 350,
+        marginX,
+        marginY,
+        // imageMargin,
+        color,
+        backgroundColor,
+        symbols,
+        shape,
+        symbolHeight,
+        symbolMargin,
+        image: image,
+        imageXMargin,
+        imageYMargin,
+        imageWidth,
+        imageHeight,
+        style: 'border-radius: 10px; margin: 20px;'
+      });
+      code.generate('canvas');
+    }
+  </script>
+</body>
+</html>
