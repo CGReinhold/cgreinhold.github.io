@@ -33,8 +33,18 @@
       background-color: white;
       border-radius: 10px;
     }
-    .canvas  {
+    .imagem  {
       flex: 1;
+    }
+    .salvar {
+      border: 2px solid #DDD;
+      color: #DDD;
+      padding: 5px;
+      display: flex;
+      margin: 0px 55px 0px 20px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
     .styling {
       border-radius: 4px;
@@ -72,7 +82,10 @@
     </h1>
   </header>
   <div class="main">
-    <div id="canvas" class="canvas"></div>
+    <div class="imagem">
+      <div id="canvas" class="canvas"></div>
+      <div class="salvar" onclick="save()">Salvar como png</div>
+    </div>
     <div class="form">
       <form>
         <div class="form-group">
@@ -148,15 +161,15 @@
             <div class="group-content">
               <div class="form-group">
                 <label for="image">URL da Imagem:</label>
-                <input class="form-control form-control-sm" id="image" type="text" value="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa3%2FCc.logo.circle.svg%2F1024px-Cc.logo.circle.svg.png&f=1" onchange="render()" />
+                <input class="form-control form-control-sm" id="image" type="text" value="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/1024px-Cc.logo.circle.svg.png" onchange="render()" />
               </div>
               <div class="form-group">
                 <label for="imageXMargin">Margem X da imagem:</label>
-                <input class="form-control form-control-sm" id="imageXMargin" type="range" min="1" max="1000" value="90" onchange="render()" />
+                <input class="form-control form-control-sm" id="imageXMargin" type="range" min="1" max="1000" value="95" onchange="render()" />
               </div>
               <div class="form-group">
                 <label for="imageYMargin">Margem Y da imagem:</label>
-                <input class="form-control form-control-sm" id="imageYMargin" type="range" min="1" max="1000" value="100" onchange="render()" />
+                <input class="form-control form-control-sm" id="imageYMargin" type="range" min="1" max="1000" value="105" onchange="render()" />
               </div>
               <div class="form-group">
                 <label for="imageWidth">Largura da imagem:</label>
@@ -227,6 +240,11 @@
         style: 'border-radius: 10px; margin: 20px;'
       });
       code.generate('canvas');
+      this.code = code;
+    }
+
+    function save() {
+      this.code.save();
     }
   </script>
 </body>

@@ -49,6 +49,7 @@ class CGRCode {
     canvas.height = this.height;
     canvas.style.position = "absolute";
     canvas.style = this.style;
+    this.canvas = canvas;
 
     const div = document.getElementById(divID);
     div.innerHTML = '';
@@ -75,10 +76,15 @@ class CGRCode {
 
     if (this.image) {
       var image = new Image();
-      image.src = this.image;
-
       image.onload = () => this.context.drawImage(image, this.imageXMargin, this.imageYMargin, this.imageWidth, this.imageHeight);
+      image.crossOrigin = 'Anonymous';
+      image.src = this.image;
     }
+  }
+
+  save() {
+    var image = this.canvas.toDataURL("image/png");
+    window.open(image);
   }
 
   /// Symbols
@@ -197,13 +203,13 @@ class CGRCode {
   _circleY(angulo, raio) { return raio * Math.sin(Math.PI * angulo / 180.0) };
 
   _outlineCircle(sequence) {
-		const raio = 200;
-		const qtd = sequence.length;
-		const espacoAngulo = Math.round(360 / qtd);
+		const radius = this.symbolMargin;
+		const quantity = sequence.length + 1;
+		const espacoAngulo = Math.round(360 / quantity);
 		let ultimoAngulo = 0;
-		for (var i = 0; i < qtd; i++) {
-			const x = this._circleX(ultimoAngulo, raio) + raio;
-			const y = this._circleY(ultimoAngulo, raio) + raio;
+		for (var i = 0; i < quantity; i++) {
+			const x = this._circleX(ultimoAngulo, radius) + radius;
+			const y = this._circleY(ultimoAngulo, radius) + radius;
       
       this._drawSymbol(x, y, this.symbolHeight || 10, sequence[i]);
       
