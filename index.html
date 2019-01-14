@@ -26,22 +26,19 @@
       color: #4D4D4D;
     }
     .form {
-      flex: 3;
+      flex: 1;
       max-width: 800px;
       padding: 20px;
       margin: 20px;
       background-color: white;
       border-radius: 10px;
     }
-    .imagem  {
-      flex: 1;
-    }
     .salvar {
       border: 2px solid #DDD;
       color: #DDD;
       padding: 5px;
       display: flex;
-      margin: 0px 55px 0px 20px;
+      margin: 0px 20px 0px 20px;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -73,9 +70,15 @@
     .group-content {
       display: none;
     }
+    @media only screen and (max-width: 700px) {
+      .main {
+        display: block;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
-<body onload="render()">
+<body onload="render()" onresize="render()">
   <header>
     <h1>
       CGR Code
@@ -205,27 +208,29 @@
     }
 
     function render(event) {
+      const height = screen.width > 600 ? 350 : screen.width - 60;
+      const differenceHeight = screen.width > 600 ? 1 : ((100 - ((height * 100) / 350)) / 100) * 3;
+
       const text = document.getElementById('text').value;
-      const marginX = Number(document.getElementById('marginY').value);
-      const marginY = Number(document.getElementById('marginX').value);
+      const marginX = Number(document.getElementById('marginY').value) * differenceHeight;
+      const marginY = Number(document.getElementById('marginX').value) * differenceHeight;
       const color = document.getElementById('color').value;
       const backgroundColor = document.getElementById('backgroundColor').value;
       const symbols = document.getElementById('symbols').value;
       const shape = document.getElementById('shape').value;
-      const symbolHeight = Number(document.getElementById('symbolHeight').value);
-      const symbolMargin = Number(document.getElementById('symbolMargin').value);
-      const imageXMargin = Number(document.getElementById('imageXMargin').value);
-      const imageYMargin = Number(document.getElementById('imageYMargin').value);
-      const imageWidth = Number(document.getElementById('imageWidth').value);
-      const imageHeight = Number(document.getElementById('imageHeight').value);
+      const symbolHeight = Number(document.getElementById('symbolHeight').value) * differenceHeight;
+      const symbolMargin = Number(document.getElementById('symbolMargin').value) * differenceHeight;
+      const imageXMargin = Number(document.getElementById('imageXMargin').value) * differenceHeight;
+      const imageYMargin = Number(document.getElementById('imageYMargin').value) * differenceHeight;
+      const imageWidth = Number(document.getElementById('imageWidth').value) * differenceHeight;
+      const imageHeight = Number(document.getElementById('imageHeight').value) * differenceHeight;
       const image = document.getElementById('image').value;
 
       const code = new CGRCode({ 
         text,
-        height: 350,
+        height,
         marginX,
         marginY,
-        // imageMargin,
         color,
         backgroundColor,
         symbols,
