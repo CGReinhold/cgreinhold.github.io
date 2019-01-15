@@ -51,14 +51,33 @@ class CGRCode {
     canvas.style = this.style;
     this.canvas = canvas;
 
-    const div = document.getElementById(divID);
-    div.innerHTML = '';
-    div.appendChild(canvas);
-
     this.context = canvas.getContext('2d');
     this.context.clearRect(0, 0, this.height, this.height);
     this.context.fillStyle = this.backgroundColor;
     this.context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    if (this.image) {
+      var image = new Image();
+      image.onload = () => {
+        this.context.drawImage(image, this.imageXMargin, this.imageYMargin, this.imageWidth, this.imageHeight);
+        this._drawCode(divID, canvas);
+      }
+      image.crossOrigin = 'Anonymous';
+      image.src = this.image;
+    } else {
+      this._drawCode(divID, canvas);
+    }
+  }
+
+  save() {
+    var image = this.canvas.toDataURL("image/png");
+    window.open(image);
+  }
+
+  _drawCode(divID, canvas) {
+    const div = document.getElementById(divID);
+    div.innerHTML = '';
+    div.appendChild(canvas);
 
     let sequence = this._textToNumber(this.text);
     sequence = '4' + sequence;
@@ -73,18 +92,6 @@ class CGRCode {
         this._outlineTriangle(sequence);
         break;
     }
-
-    if (this.image) {
-      var image = new Image();
-      image.onload = () => this.context.drawImage(image, this.imageXMargin, this.imageYMargin, this.imageWidth, this.imageHeight);
-      image.crossOrigin = 'Anonymous';
-      image.src = this.image;
-    }
-  }
-
-  save() {
-    var image = this.canvas.toDataURL("image/png");
-    window.open(image);
   }
 
   /// Symbols
