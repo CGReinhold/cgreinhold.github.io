@@ -135,9 +135,13 @@
                 <input class="form-control form-control-sm" id="marginY" type="range" min="1" max="1000" value="35" oninput="render()" />
               </div>
               <div class="form-group">
-                  <label for="marginX">Margem externa horizontal:</label>
-                  <input class="form-control form-control-sm" id="marginX" type="range" min="1" max="1000" value="43" oninput="render()" />
-                </div>
+                <label for="marginX">Margem externa horizontal:</label>
+                <input class="form-control form-control-sm" id="marginX" type="range" min="1" max="1000" value="43" oninput="render()" />
+              </div>
+              <div class="form-group">
+                <label for="rotation">Rotação:</label>
+                <input class="form-control form-control-sm" id="rotation" type="range" min="-360" max="360" value="0" oninput="render()" />
+              </div>
             </div>
           </div>
           <div class="group-collapse">
@@ -182,6 +186,10 @@
                 <label for="imageHeight">Altura da imagem:</label>
                 <input class="form-control form-control-sm" id="imageHeight" type="range" min="10" max="1000" value="350" onchange="render()" />
               </div>
+              <div class="form-group">
+                <label for="imageRotation">Rotação da imagem:</label>
+                <input class="form-control form-control-sm" id="imageRotation" type="range" min="-360" max="360" value="0" onchange="render()" />
+              </div>
             </div>
           </div>
         </div>
@@ -214,6 +222,7 @@
       const text = document.getElementById('text').value;
       const marginX = Number(document.getElementById('marginY').value) * differenceHeight;
       const marginY = Number(document.getElementById('marginX').value) * differenceHeight;
+      const rotation = Number(document.getElementById('rotation').value);
       const color = document.getElementById('color').value;
       const backgroundColor = document.getElementById('backgroundColor').value;
       const symbols = document.getElementById('symbols').value;
@@ -224,6 +233,7 @@
       const imageYMargin = Number(document.getElementById('imageYMargin').value) * differenceHeight;
       const imageWidth = Number(document.getElementById('imageWidth').value) * differenceHeight;
       const imageHeight = Number(document.getElementById('imageHeight').value) * differenceHeight;
+      const imageRotation = Number(document.getElementById('imageRotation').value);
       const image = document.getElementById('image').value;
 
       const code = new CGRCode({ 
@@ -231,6 +241,7 @@
         height,
         marginX,
         marginY,
+        rotation,
         color,
         backgroundColor,
         symbols,
@@ -242,6 +253,7 @@
         imageYMargin,
         imageWidth,
         imageHeight,
+        imageRotation,
         style: 'border-radius: 10px; margin: 20px;'
       });
       code.generate('canvas');

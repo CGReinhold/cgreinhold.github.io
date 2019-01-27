@@ -1,20 +1,22 @@
 class CGRCode {
   constructor({ 
-    text = '', // OK
-    height = 300, // Serve pra nada
-    color = '#000000', // OK
-    backgroundColor = '#FFFFFF', // OK
-    marginX = 50, // OK
-    marginY = 50, // OK
+    text = '',
+    height = 300,
+    color = '#000000',
+    backgroundColor = '#FFFFFF',
+    marginX = 50,
+    marginY = 50,
+    rotation = 0,
     shape = 'circle',
-    symbols = 'triangles', // OK
-    symbolHeight = null, // OK
-    symbolMargin = null, // OK
+    symbols = 'triangles',
+    symbolHeight = null,
+    symbolMargin = null,
     image = undefined,
     imageXMargin = 0,
     imageYMargin = 0,
     imageHeight = 100,
     imageWidth = 100,
+    imageRotation = 0,
     style = ''
   }) {
     this.text = text;
@@ -23,6 +25,7 @@ class CGRCode {
     this.backgroundColor = backgroundColor;
     this.marginX = marginX;
     this.marginY = marginY;
+    this.rotation = rotation;
     this.shape = shape;
     this.symbols = symbols;
     this.symbolHeight = symbolHeight;
@@ -32,6 +35,7 @@ class CGRCode {
     this.imageYMargin = imageYMargin;
     this.imageHeight = imageHeight;
     this.imageWidth = imageWidth;
+    this.imageRotation = imageRotation;
     this.style = style;
   }
 
@@ -59,8 +63,16 @@ class CGRCode {
     if (this.image) {
       var image = new Image();
       image.onload = () => {
-        this.context.drawImage(image, this.imageXMargin, this.imageYMargin, this.imageWidth, this.imageHeight);
+        this.context.save();
+        this.context.translate(this.imageXMargin + (this.imageWidth / 2), this.imageYMargin + (this.imageHeight / 2));
+        this.context.rotate(this.imageRotation * Math.PI / 180);
+        this.context.drawImage(image, -(this.imageWidth / 2), -(this.imageHeight / 2), this.imageWidth, this.imageHeight);
+        this.context.restore();
+        this.context.save();
+        this.context.translate(this.imageWidth / 2, this.imageHeight / 2);
+        this.context.rotate(this.rotation * Math.PI / 180);
         this._drawCode(divID, canvas);
+        this.context.restore();
       }
       image.crossOrigin = 'Anonymous';
       image.src = this.image;
@@ -144,18 +156,11 @@ class CGRCode {
     this.context.fill();
   }
 
-  _angle(xA, yA, xB, yB) {
-    return Math.atan((yB - yA) / (xB - xA)) * (180 / Math.PI);
-  }
-
   _line(x, y, height) {
-    // const angle = this._angle(x, y, this.previousX, this.previousY);
     this.context.strokeStyle = this.color;
     this.context.beginPath();
     this.context.moveTo(x, y + height / 2);
     this.context.lineTo(x + height, y + height / 2);
-    // this.context.moveTo(x, y);
-    // this.context.lineTo(x + height * Math.sin(angle), y + height * Math.cos(angle));
   }
 
   _cross(x, y, height) {
@@ -170,8 +175,8 @@ class CGRCode {
 
   /// Draws a symbol based on the number
   _drawSymbol(x, y, height, number) {
-    x += this.marginY;
-    y += this.marginX;
+    x += this.marginY - (this.imageHeight / 2);
+    y += this.marginX - (this.imageWidth / 2);
     if (number === '4') {
       this._cross(x, y, height)
     } else if (number === '0') {
