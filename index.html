@@ -78,7 +78,7 @@
     }
   </style>
 </head>
-<body onload="render()" onresize="render()">
+<body onload="pageLoad()" onresize="render()">
   <header>
     <h1>
       CGR Code
@@ -168,7 +168,11 @@
             <div class="group-content">
               <div class="form-group">
                 <label for="image">URL da Imagem:</label>
-                <input class="form-control form-control-sm" id="image" type="text" value="https://images.ctfassets.net/2d5q1td6cyxq/2SqLXL2zJmcUUI2QSkUCy6/71701594cb1fdf6f2e60d34297262d6b/square.01.jpg" onchange="render()" />
+                <input class="form-control form-control-sm" id="image" type="text" value="https://images.ctfassets.net/2d5q1td6cyxq/2SqLXL2zJmcUUI2QSkUCy6/71701594cb1fdf6f2e60d34297262d6b/square.01.jpg" onchange="renderImage()" />
+              </div>
+              <div class="form-group">
+                <label for="imageSource">Imagem:</label>
+                <input class="form-control form-control-sm" id="imageSource" type="file" accept="image/*" />
               </div>
               <div class="form-group">
                 <label for="imageXMargin">Margem X da imagem:</label>
@@ -197,6 +201,8 @@
     </div>
   </div>
   <script>
+    var loadedImage = '';
+
     function expandAccordion(element) {
       const panel = element.nextElementSibling;
       const estaAtivo = panel.classList.contains('active');
@@ -215,7 +221,29 @@
       }
     }
 
-    function render(event) {
+    function renderImageSource(e) {
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        loadedImage = event.target.result; 
+        document.getElementById('image').value = '';
+        render();
+      }
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    function pageLoad() {
+      render();
+
+      var imageLoader = document.getElementById('imageSource');
+      imageLoader.addEventListener('change', renderImageSource, false);
+    }
+
+    function renderImage() {
+      loadedImage = document.getElementById('image').value;
+      render();
+    }
+
+    function render() {
       const height = screen.width > 600 ? 350 : screen.width - 60;
       const differenceHeight = screen.width > 600 ? 1 : ((100 - ((height * 100) / 350)) / 100) * 3;
 
@@ -234,7 +262,7 @@
       const imageWidth = Number(document.getElementById('imageWidth').value) * differenceHeight;
       const imageHeight = Number(document.getElementById('imageHeight').value) * differenceHeight;
       const imageRotation = Number(document.getElementById('imageRotation').value);
-      const image = document.getElementById('image').value;
+      const image = loadedImage || document.getElementById('image').value;
 
       const code = new CGRCode({ 
         text,

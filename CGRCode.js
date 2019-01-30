@@ -69,7 +69,7 @@ class CGRCode {
         this.context.drawImage(image, -(this.imageWidth / 2), -(this.imageHeight / 2), this.imageWidth, this.imageHeight);
         this.context.restore();
         this.context.save();
-        this.context.translate(this.imageWidth / 2, this.imageHeight / 2);
+        this.context.translate(this.height / 2, this.height / 2);
         this.context.rotate(this.rotation * Math.PI / 180);
         this._drawCode(divID, canvas);
         this.context.restore();
@@ -175,8 +175,8 @@ class CGRCode {
 
   /// Draws a symbol based on the number
   _drawSymbol(x, y, height, number) {
-    x += this.marginY - (this.imageHeight / 2);
-    y += this.marginX - (this.imageWidth / 2);
+    x += this.marginY - (this.height / 2);
+    y += this.marginX - (this.height / 2);
     if (number === '4') {
       this._cross(x, y, height)
     } else if (number === '0') {
