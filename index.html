@@ -87,12 +87,12 @@
   <div class="main">
     <div class="imagem">
       <div id="canvas" class="canvas"></div>
-      <div class="salvar" onclick="save()">Salvar como png</div>
+      <div class="salvar" onclick="save()">Save as png</div>
     </div>
     <div class="form">
       <form>
         <div class="form-group">
-          <label for="text">Texto:</label>
+          <label for="text">Text:</label>
           <input class="form-control form-control-sm" id="text" type="text" value="test" oninput="render()" />
         </div>
         <div class="styling">
@@ -107,91 +107,91 @@
                 <input class="form-control form-control-sm" id="height" type="range" min="100" max="2000" value="550" oninput="render()" />
               </div> -->
               <div class="form-group">
-                <label for="shape">Formato</label>
+                <label for="shape">Shape</label>
                 <select class="form-control form-control-sm" id="shape" onchange="render()">
-                  <option value="square">Quadrado</option>
-                  <option value="circle">Círculo</option>
-                  <option value="triangle">Triangulo</option>
+                  <option value="square">Square</option>
+                  <option value="circle">Circle</option>
+                  <option value="triangle">Triangle</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="symbols">Símbolos</label>
+                <label for="symbols">Symbols</label>
                 <select class="form-control form-control-sm" id="symbols" onchange="render()">
-                  <option value="squares">Quadrados</option>
-                  <option value="circles">Círculos</option>
-                  <option value="triangles">Triangulos</option>
+                  <option value="squares">Squares</option>
+                  <option value="circles">Circless</option>
+                  <option value="triangles">Triangles</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="symbolHeight">Tamanho do símbolo:</label>
+                <label for="symbolHeight">Symbols size:</label>
                 <input class="form-control form-control-sm" id="symbolHeight" type="range" min="1" max="500" value="20" oninput="render()" />
               </div>
               <div class="form-group">
-                <label for="symbolMargin">Margem dos símbolos:</label>
+                <label for="symbolMargin">Symbols margin:</label>
                 <input class="form-control form-control-sm" id="symbolMargin" type="range" min="1" max="500" value="30" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="marginY">Margem externa vertical:</label>
+                <label for="marginY">External margin (vertical):</label>
                 <input class="form-control form-control-sm" id="marginY" type="range" min="1" max="1000" value="35" oninput="render()" />
               </div>
               <div class="form-group">
-                <label for="marginX">Margem externa horizontal:</label>
+                <label for="marginX">External margin (horizontal):</label>
                 <input class="form-control form-control-sm" id="marginX" type="range" min="1" max="1000" value="43" oninput="render()" />
               </div>
               <div class="form-group">
-                <label for="rotation">Rotação:</label>
+                <label for="rotation">Rotation:</label>
                 <input class="form-control form-control-sm" id="rotation" type="range" min="-360" max="360" value="0" oninput="render()" />
               </div>
             </div>
           </div>
           <div class="group-collapse">
             <div class="group-head" onclick="expandAccordion(this)">
-              <h5>Cores</h5>
+              <h5>Colors</h5>
               <i class="fa fa-chevron-down"></i>
             </div>
             <div class="group-content">
               <div class="form-group">
-                <label for="color">Cor dos símbolos:</label>
+                <label for="color">Symbol color:</label>
                 <input class="form-control form-control-sm" id="color" type="color" value="#231F20" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="backgroundColor">Cor do background:</label>
+                <label for="backgroundColor">Background color:</label>
                 <input class="form-control form-control-sm" id="backgroundColor" type="color" value="#ffffff" onchange="render()" />
               </div>
             </div>
           </div>
           <div class="group-collapse">
             <div class="group-head" onclick="expandAccordion(this)">
-              <h5>Imagem</h5>
+              <h5>Image</h5>
               <i class="fa fa-chevron-down"></i>
             </div>
             <div class="group-content">
               <div class="form-group">
-                <label for="image">URL da Imagem:</label>
+                <label for="image">Image URL:</label>
                 <input class="form-control form-control-sm" id="image" type="text" value="https://images.ctfassets.net/2d5q1td6cyxq/2SqLXL2zJmcUUI2QSkUCy6/71701594cb1fdf6f2e60d34297262d6b/square.01.jpg" onchange="renderImage()" />
               </div>
               <div class="form-group">
-                <label for="imageSource">Imagem:</label>
+                <label for="imageSource">Image:</label>
                 <input class="form-control form-control-sm" id="imageSource" type="file" accept="image/*" />
               </div>
               <div class="form-group">
-                <label for="imageXMargin">Margem X da imagem:</label>
+                <label for="imageXMargin">Image margin (horizontal):</label>
                 <input class="form-control form-control-sm" id="imageXMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="imageYMargin">Margem Y da imagem:</label>
+                <label for="imageYMargin">Image margin (vertical):</label>
                 <input class="form-control form-control-sm" id="imageYMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="imageWidth">Largura da imagem:</label>
+                <label for="imageWidth">Image width:</label>
                 <input class="form-control form-control-sm" id="imageWidth" type="range" min="10" max="1000" value="350" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="imageHeight">Altura da imagem:</label>
+                <label for="imageHeight">Image height:</label>
                 <input class="form-control form-control-sm" id="imageHeight" type="range" min="10" max="1000" value="350" onchange="render()" />
               </div>
               <div class="form-group">
-                <label for="imageRotation">Rotação da imagem:</label>
+                <label for="imageRotation">Image rotation:</label>
                 <input class="form-control form-control-sm" id="imageRotation" type="range" min="-360" max="360" value="0" onchange="render()" />
               </div>
             </div>
