@@ -9,6 +9,7 @@ class CGRCode {
     rotation = 0,
     shape = 'circle',
     symbols = 'triangles',
+    symbolWidth = 4,
     symbolHeight = null,
     symbolMargin = null,
     image = undefined,
@@ -28,6 +29,7 @@ class CGRCode {
     this.rotation = rotation;
     this.shape = shape;
     this.symbols = symbols;
+    this.symbolWidth = symbolWidth;
     this.symbolHeight = symbolHeight;
     this.symbolMargin = symbolMargin;
     this.image = image;
@@ -59,6 +61,7 @@ class CGRCode {
     this.context.clearRect(0, 0, this.height, this.height);
     this.context.fillStyle = this.backgroundColor;
     this.context.fillRect(0, 0, canvas.width, canvas.height);
+    this.context.lineWidth = this.symbolWidth;
     
     if (this.image) {
       var image = new Image();
@@ -145,7 +148,6 @@ class CGRCode {
     this.context.lineTo(x, y + middleY * 2);
     this.context.closePath();
     
-    this.context.lineWidth = 1;
     this.context.strokeStyle = this.color;
     this.context.stroke();
   }
@@ -164,7 +166,6 @@ class CGRCode {
   }
 
   _cross(x, y, height) {
-    this.context.lineWidth = 2;
     this.context.strokeStyle = this.color;
     this.context.beginPath();
     this.context.moveTo(x, y + height / 2);
