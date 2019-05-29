@@ -118,6 +118,15 @@ class CGRCode {
     this.context.rect(x, y, height, height);
   }
 
+  _squarePoint(x, y, height) {
+    this.context.strokeStyle = this.color;
+    this.context.rect(x, y, height, height);
+    const newX = x + (height / 2) - (this.symbolWidth / 2) - 2;
+    const newY = y + (height / 2) - (this.symbolWidth / 2) - 2;
+    this.context.fillStyle = this.color;
+    this.context.fillRect(newX, newY, this.symbolWidth + 4, this.symbolWidth + 4)
+  }
+
   _fillSquare(x, y, height) {
     this.context.fillStyle = this.color;
     this.context.fillRect(x, y, height, height);
@@ -135,6 +144,17 @@ class CGRCode {
 
   _fillCircle(x, y, height) {
     this._circle(x, y, height);
+    this.context.fillStyle = this.color;
+    this.context.fill();
+  }
+
+  _fillCirclePoint(x, y, height) {
+    this._circle(x, y, height);
+
+    const newX = x + (height / 2) - (this.symbolWidth / 2);
+    const newY = y + (height / 2) - (this.symbolWidth / 2);
+    this._circle(newX, newY, this.symbolWidth);
+
     this.context.fillStyle = this.color;
     this.context.fill();
   }
@@ -158,7 +178,19 @@ class CGRCode {
     this.context.fill();
   }
 
+  _fillTrianglePoint(x, y, height) {
+    this._triangle(x, y, height)
+
+    const newX = x + (height / 2) - (this.symbolWidth / 2);
+    const newY = y + (height / 1.5) - (this.symbolWidth / 2);
+    this._triangle(newX, newY, this.symbolWidth);
+
+    this.context.fillStyle = this.color;
+    this.context.fill();
+  }
+
   _line(x, y, height) {
+    this.context.lineWidth = this.symbolWidth;
     this.context.strokeStyle = this.color;
     this.context.beginPath();
     this.context.moveTo(x, y + height / 2);
@@ -166,12 +198,13 @@ class CGRCode {
   }
 
   _cross(x, y, height) {
+    this.context.lineWidth = this.symbolWidth + 3;
     this.context.strokeStyle = this.color;
     this.context.beginPath();
-    this.context.moveTo(x, y + height / 2);
-    this.context.lineTo(x + height, y + height / 2);
-    this.context.moveTo(x + height /2, y);
-    this.context.lineTo(x + height /2, y + height);
+    this.context.moveTo(x - this.symbolWidth/2, y + height / 2);
+    this.context.lineTo(x + this.symbolWidth/2 + height, y + height / 2);
+    this.context.moveTo(x + height /2, y - this.symbolWidth/2);
+    this.context.lineTo(x + height /2, y + this.symbolWidth/2 + height);
   }
 
   /// Draws a symbol based on the number
@@ -187,21 +220,21 @@ class CGRCode {
         case 'squares':
           if (number === '1') {
             this._square(x, y, height)
-          } else {
+          } else if (number === '2') {
             this._fillSquare(x, y, height);
           }
           break;
         case 'triangles':
           if (number === '1') {
             this._triangle(x, y, height)
-          } else {
+          } else if (number === '2') {
             this._fillTriangle(x, y, height);
           }
           break;
         case 'circles':
           if (number === '1') {
             this._circle(x, y, height)
-          } else {
+          } else if (number === '2') {
             this._fillCircle(x, y, height);
           }
           break;
@@ -232,7 +265,11 @@ class CGRCode {
 	}
 
   _outlineTriangle(sequence) {
-    let tamanho = Math.floor(sequence.length / 3) + 1;
+    console.log(sequence)
+    let tamanho = Math.floor(sequence.length / 3) + 2;
+    //Adiciona dois caracteres que serão invisíveis para remover as pontas
+    sequence = sequence.substr(0, tamanho - 1) + '5' + sequence.substr(tamanho - 1, tamanho - 1) + '5' + sequence.substr(((tamanho - 1) * 2), tamanho);
+    sequence += '22';
 	  let x = 0;
 	  let y = 10;
 	  let contador1 = 0;
