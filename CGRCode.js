@@ -51,13 +51,14 @@ class CGRCode {
   generate(divID) {
     const canvas = document.createElement('canvas');
     canvas.id = "cgrcode";
-    canvas.width = this.height;
-    canvas.height = this.height;
+    canvas.width = this.height * 2;
+    canvas.height = this.height * 2;
     canvas.style.position = "absolute";
     canvas.style = this.style;
     this.canvas = canvas;
 
     this.context = canvas.getContext('2d');
+    this.context.scale(2, 2)
     this.context.clearRect(0, 0, this.height, this.height);
     this.context.fillStyle = this.backgroundColor;
     this.context.fillRect(0, 0, canvas.width, canvas.height);
@@ -148,7 +149,7 @@ class CGRCode {
     this.context.fill();
   }
 
-  _fillCirclePoint(x, y, height) {
+  _circlePoint(x, y, height) {
     this._circle(x, y, height);
 
     const newX = x + (height / 2) - (this.symbolWidth / 2);
@@ -178,7 +179,7 @@ class CGRCode {
     this.context.fill();
   }
 
-  _fillTrianglePoint(x, y, height) {
+  _trianglePoint(x, y, height) {
     this._triangle(x, y, height)
 
     const newX = x + (height / 2) - (this.symbolWidth / 2);
@@ -211,9 +212,7 @@ class CGRCode {
   _drawSymbol(x, y, height, number) {
     x += this.marginY - (this.height / 2);
     y += this.marginX - (this.height / 2);
-    if (number === '4') {
-      this._cross(x, y, height)
-    } else if (number === '0') {
+    if (number === '0') {
       this._line(x, y, height)
     } else {
       switch (this.symbols) {
@@ -222,6 +221,8 @@ class CGRCode {
             this._square(x, y, height)
           } else if (number === '2') {
             this._fillSquare(x, y, height);
+          } else if (number === '4') {
+            this._squarePoint(x, y, height);
           }
           break;
         case 'triangles':
@@ -229,6 +230,8 @@ class CGRCode {
             this._triangle(x, y, height)
           } else if (number === '2') {
             this._fillTriangle(x, y, height);
+          } else if (number === '4') {
+            this._trianglePoint(x, y, height);
           }
           break;
         case 'circles':
@@ -236,6 +239,8 @@ class CGRCode {
             this._circle(x, y, height)
           } else if (number === '2') {
             this._fillCircle(x, y, height);
+          } else if (number === '4') {
+            this._circlePoint(x, y, height);
           }
           break;
       }
@@ -251,7 +256,7 @@ class CGRCode {
   _outlineCircle(sequence) {
 		const radius = this.symbolMargin;
 		const quantity = sequence.length + 1;
-		const espacoAngulo = Math.round(360 / quantity);
+    const espacoAngulo = 360 / quantity;
 		let ultimoAngulo = 0;
 		for (var i = 0; i < quantity; i++) {
 			const x = this._circleX(ultimoAngulo, radius) + radius;

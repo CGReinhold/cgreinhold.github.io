@@ -2,81 +2,8 @@
 <html>
 <head>
   <script src="./CGRCode.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <meta charset="utf-8" />
-  <style>
-    body {
-      background-color: #454545;
-      color: white;
-    }
-    header {
-      padding: 50px 50px 0 50px;
-      margin: 0 20px 0 20px;
-    }
-    .main {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      padding: 50px;
-      color: #4D4D4D;
-    }
-    .form {
-      flex: 1;
-      max-width: 800px;
-      padding: 20px;
-      margin: 20px;
-      background-color: white;
-      border-radius: 10px;
-    }
-    .salvar {
-      border: 2px solid #DDD;
-      color: #DDD;
-      padding: 5px;
-      display: flex;
-      margin: 0px 20px 0px 20px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .styling {
-      border-radius: 4px;
-    }
-    .form-group {
-      margin: 5px;
-    }
-    .group-collapse {
-      margin-bottom: 8px;
-    }
-    .group-head {
-      cursor: pointer;
-      display: flex;
-      padding: 5px;
-      color: #4D4D4D;
-      font-size: 14px;
-      font-weight: 700;
-      border-bottom: 1px solid #CCC;
-      position: relative;
-      -webkit-transition: all 0.4s ease;
-      -o-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .group-content {
-      display: none;
-    }
-    @media only screen and (max-width: 700px) {
-      .main {
-        display: block;
-        padding: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body onload="pageLoad()" onresize="render()">
   <header>
@@ -93,18 +20,18 @@
       <form>
         <div class="form-group">
           <label for="text">Text:</label>
-          <input class="form-control form-control-sm" id="text" type="text" value="test" oninput="render()" />
+          <input class="form-control " id="text" type="text" value="test" oninput="render()" />
         </div>
         <div class="styling">
           <div class="group-collapse">
             <div class="group-head" onclick="expandAccordion(this)">
               <h5>Style</h5>
-              <i class="fa fa-chevron-down"></i>
+              <svg class="chevron" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg>
             </div>
             <div class="group-content">
               <div class="form-group">
                 <label for="shape">Shape</label>
-                <select class="form-control form-control-sm" id="shape" onchange="render()">
+                <select class="form-control" id="shape" onchange="render()">
                   <option value="square">Square</option>
                   <option value="circle">Circle</option>
                   <option value="triangle">Triangle</option>
@@ -112,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label for="symbols">Symbols</label>
-                <select class="form-control form-control-sm" id="symbols" onchange="render()">
+                <select class="form-control" id="symbols" onchange="render()">
                   <option value="squares">Squares</option>
                   <option value="circles">Circles</option>
                   <option value="triangles">Triangles</option>
@@ -120,79 +47,123 @@
               </div>
               <div class="form-group">
                 <label for="symbolHeight">Size of the symbols:</label>
-                <input class="form-control form-control-sm" id="symbolHeight" type="range" min="1" max="500" value="25" oninput="render()" />
+                <div class="form-control">
+                  <div class="range-label">1</div>
+                  <input id="symbolHeight" type="range" min="1" max="500" value="13" oninput="render()" />
+                  <div class="range-label">500</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="symbolWidth">Width of the symbols:</label>
-                <input class="form-control form-control-sm" id="symbolWidth" type="range" min="1" max="20" value="4" oninput="render()" />
+                <div class="form-control">
+                  <div class="range-label">1</div>
+                  <input id="symbolWidth" type="range" min="1" max="20" value="2" oninput="render()" />
+                  <div class="range-label">20</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="symbolMargin">Margin of the symbols:</label>
-                <input class="form-control form-control-sm" id="symbolMargin" type="range" min="1" max="500" value="35" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">1</div>
+                  <input class="form-control" id="symbolMargin" type="range" min="1" max="500" value="17" onchange="render()" />
+                  <div class="range-label">500</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="marginY">External margin Y:</label>
-                <input class="form-control form-control-sm" id="marginY" type="range" min="1" max="1000" value="60" oninput="render()" />
+                <div class="form-control">
+                  <div class="range-label">1</div>
+                  <input class="form-control" id="marginY" type="range" min="1" max="1000" value="27" oninput="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="marginX">External margin X:</label>
-                <input class="form-control form-control-sm" id="marginX" type="range" min="1" max="1000" value="73" oninput="render()" />
+                <div class="form-control">
+                  <div class="range-label">1</div>
+                  <input class="form-control" id="marginX" type="range" min="1" max="1000" value="36" oninput="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="rotation">Rotation:</label>
-                <input class="form-control form-control-sm" id="rotation" type="range" min="-360" max="360" value="0" oninput="render()" />
+                <div class="form-control">
+                  <div class="range-label">-360°</div>
+                  <input class="form-control" id="rotation" type="range" min="-360" max="360" value="0" oninput="render()" />
+                  <div class="range-label">360°</div>
+                </div>
               </div>
             </div>
           </div>
           <div class="group-collapse">
             <div class="group-head" onclick="expandAccordion(this)">
               <h5>Colors</h5>
-              <i class="fa fa-chevron-down"></i>
+              <svg class="chevron" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg>
             </div>
             <div class="group-content">
               <div class="form-group">
                 <label for="color">Color of the symbols:</label>
-                <input class="form-control form-control-sm" id="color" type="color" value="#231F20" onchange="render()" />
+                <input class="form-control" id="color" type="color" value="#231F20" onchange="render()" />
               </div>
               <div class="form-group">
                 <label for="backgroundColor">Background color:</label>
-                <input class="form-control form-control-sm" id="backgroundColor" type="color" value="#ffffff" onchange="render()" />
+                <input class="form-control" id="backgroundColor" type="color" value="#ffffff" onchange="render()" />
               </div>
             </div>
           </div>
           <div class="group-collapse">
             <div class="group-head" onclick="expandAccordion(this)">
               <h5>Image</h5>
-              <i class="fa fa-chevron-down"></i>
+              <svg class="chevron" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg>
             </div>
             <div class="group-content">
               <div class="form-group">
                 <label for="image">Image URL:</label>
-                <input class="form-control form-control-sm" id="image" type="text" value="https://images.ctfassets.net/2d5q1td6cyxq/2SqLXL2zJmcUUI2QSkUCy6/71701594cb1fdf6f2e60d34297262d6b/square.01.jpg" onchange="renderImage()" />
+                <input class="form-control" id="image" type="text" value="https://images.ctfassets.net/2d5q1td6cyxq/2SqLXL2zJmcUUI2QSkUCy6/71701594cb1fdf6f2e60d34297262d6b/square.01.jpg" onchange="renderImage()" />
               </div>
               <div class="form-group">
                 <label for="imageSource">Image:</label>
-                <input class="form-control form-control-sm" id="imageSource" type="file" accept="image/*" />
+                <input class="form-control" id="imageSource" type="file" accept="image/*" />
               </div>
               <div class="form-group">
                 <label for="imageXMargin">Image margin X:</label>
-                <input class="form-control form-control-sm" id="imageXMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">-200</div>
+                  <input class="form-control" id="imageXMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="imageYMargin">Image margin Y:</label>
-                <input class="form-control form-control-sm" id="imageYMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">-200</div>
+                  <input class="form-control" id="imageYMargin" type="range" min="-200" max="1000" value="-1" onchange="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="imageWidth">Image width:</label>
-                <input class="form-control form-control-sm" id="imageWidth" type="range" min="10" max="1000" value="450" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">10</div>
+                  <input class="form-control" id="imageWidth" type="range" min="10" max="1000" value="225" onchange="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="imageHeight">Image height:</label>
-                <input class="form-control form-control-sm" id="imageHeight" type="range" min="10" max="1000" value="450" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">10</div>
+                  <input class="form-control" id="imageHeight" type="range" min="10" max="1000" value="225" onchange="render()" />
+                  <div class="range-label">1000</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="imageRotation">Image rotation:</label>
-                <input class="form-control form-control-sm" id="imageRotation" type="range" min="-360" max="360" value="0" onchange="render()" />
+                <div class="form-control">
+                  <div class="range-label">-360°</div>
+                  <input class="form-control" id="imageRotation" type="range" min="-360" max="360" value="0" onchange="render()" />
+                  <div class="range-label">360°</div>
+                </div>
               </div>
             </div>
           </div>
@@ -205,11 +176,17 @@
 
     function expandAccordion(element) {
       const panel = element.nextElementSibling;
+      const chevron = element.children[1];
       const estaAtivo = panel.classList.contains('active');
 
       const actives = document.getElementsByClassName('active');
       if (actives && actives.length) {
         for (let i = 0; i < actives.length; i++) {
+          actives[i].parentNode.children[0].children[1].style.webkitTransform = 'rotate(0deg)';
+          actives[i].parentNode.children[0].children[1].style.mozTransform = 'rotate(0deg)';
+          actives[i].parentNode.children[0].children[1].style.msTransform = 'rotate(0deg)';
+          actives[i].parentNode.children[0].children[1].style.oTransform = 'rotate(0deg)';
+          actives[i].parentNode.children[0].children[1].style.transform = 'rotate(0deg)';
           actives[i].style.display = 'none';
           actives[i].classList.remove('active');
         }
@@ -218,6 +195,11 @@
       if (panel && !estaAtivo) {
         panel.classList.add('active');
         panel.style.display = 'block';
+        chevron.style.webkitTransform = 'rotate(180deg)';
+        chevron.style.mozTransform    = 'rotate(180deg)';
+        chevron.style.msTransform     = 'rotate(180deg)';
+        chevron.style.oTransform      = 'rotate(180deg)';
+        chevron.style.transform       = 'rotate(180deg)';
       }
     }
 
@@ -244,7 +226,8 @@
     }
 
     function render() {
-      const height = screen.width > 600 ? 450 : screen.width - 60;
+      const height = screen.width > 600 ? screen.width / 2 - 150 : screen.width - 60;
+      // const height = 1000;
       const differenceHeight = screen.width > 600 ? 1 : ((100 - ((height * 100) / 350)) / 100) * 3;
 
       const text = document.getElementById('text').value;
@@ -257,7 +240,10 @@
       const shape = document.getElementById('shape').value;
       const symbolWidth = Number(document.getElementById('symbolWidth').value);
       const symbolHeight = Number(document.getElementById('symbolHeight').value) * differenceHeight;
-      const symbolMargin = Number(document.getElementById('symbolMargin').value) * differenceHeight;
+      let symbolMargin = Number(document.getElementById('symbolMargin').value) * differenceHeight;
+      if (shape === 'circle') {
+        symbolMargin += 70;
+      }
       const imageXMargin = Number(document.getElementById('imageXMargin').value) * differenceHeight;
       const imageYMargin = Number(document.getElementById('imageYMargin').value) * differenceHeight;
       const imageWidth = Number(document.getElementById('imageWidth').value) * differenceHeight;
@@ -267,7 +253,7 @@
 
       const code = new CGRCode({ 
         text,
-        height,
+        height: height / 2,
         marginX,
         marginY,
         rotation,
