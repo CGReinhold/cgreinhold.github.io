@@ -42,10 +42,12 @@ class CGRCode {
   }
 
   _textToNumber(text) {
-    if (text && text.length < 5) {
-      text = '00000'.concat(text).slice(-5);
-    }
-    return text.split('').map((char) => '00'.concat(char.charCodeAt(0).toString(3)).slice(-6)).join('');
+    const encoder = new Encoder();
+    return encoder.encode(text);
+    // if (text && text.length < 5) {
+    //   text = '00000'.concat(text).slice(-5);
+    // }
+    // return text.split('').map((char) => '00'.concat(char.charCodeAt(0).toString(3)).slice(-6)).join('');
   };
 
   generate(divID) {
@@ -119,6 +121,16 @@ class CGRCode {
     this.context.rect(x, y, height, height);
   }
 
+  _squareLine(x, y, height) {
+    this.context.strokeStyle = this.color;
+    this.context.rect(x, y, height, height);
+    this.context.stroke();
+    this.context.lineWidth = this.symbolWidth;
+    this.context.beginPath();
+    this.context.moveTo(x + height / 2, y);
+    this.context.lineTo(x + height / 2, y + height);
+  }
+
   _squarePoint(x, y, height) {
     this.context.strokeStyle = this.color;
     this.context.rect(x, y, height, height);
@@ -143,6 +155,19 @@ class CGRCode {
     this.context.stroke();
   }
 
+  _circleLine(x, y, height) {
+    const radius = height / 2;
+    const middleX = height / 2;
+    const middleY = height / 2;
+    this.context.strokeStyle = this.color;
+    this.context.beginPath();
+    this.context.arc(x + middleX, y + middleY, radius, 0, 2 * Math.PI);
+    this.context.stroke();
+    this.context.beginPath();
+    this.context.moveTo(x + height / 2, y);
+    this.context.lineTo(x + height / 2, y + height);
+  }
+
   _fillCircle(x, y, height) {
     this._circle(x, y, height);
     this.context.fillStyle = this.color;
@@ -155,7 +180,6 @@ class CGRCode {
     const newX = x + (height / 2) - (this.symbolWidth / 2);
     const newY = y + (height / 2) - (this.symbolWidth / 2);
     this._circle(newX, newY, this.symbolWidth);
-
     this.context.fillStyle = this.color;
     this.context.fill();
   }
@@ -168,9 +192,23 @@ class CGRCode {
     this.context.lineTo(x + middleX * 2, y + middleY * 2);
     this.context.lineTo(x, y + middleY * 2);
     this.context.closePath();
-    
     this.context.strokeStyle = this.color;
     this.context.stroke();
+  }
+
+  _triangleLine(x, y, height) {
+    const middleX = height / 2;
+    const middleY = height / 2;
+    this.context.beginPath();
+    this.context.moveTo(x + middleX, y);
+    this.context.lineTo(x + middleX * 2, y + middleY * 2);
+    this.context.lineTo(x, y + middleY * 2);
+    this.context.closePath();
+    this.context.strokeStyle = this.color;
+    this.context.stroke();
+    this.context.beginPath();
+    this.context.moveTo(x + height / 2, y);
+    this.context.lineTo(x + height / 2, y + height);
   }
 
   _fillTriangle(x, y, height) {
@@ -221,6 +259,8 @@ class CGRCode {
             this._square(x, y, height)
           } else if (number === '2') {
             this._fillSquare(x, y, height);
+          } else if (number === '3') {
+            this._squareLine(x, y, height);
           } else if (number === '4') {
             this._squarePoint(x, y, height);
           }
@@ -230,6 +270,8 @@ class CGRCode {
             this._triangle(x, y, height)
           } else if (number === '2') {
             this._fillTriangle(x, y, height);
+          } else if (number === '3') {
+            this._triangleLine(x, y, height);
           } else if (number === '4') {
             this._trianglePoint(x, y, height);
           }
@@ -239,6 +281,8 @@ class CGRCode {
             this._circle(x, y, height)
           } else if (number === '2') {
             this._fillCircle(x, y, height);
+          } else if (number === '3') {
+            this._circleLine(x, y, height);
           } else if (number === '4') {
             this._circlePoint(x, y, height);
           }
@@ -270,11 +314,7 @@ class CGRCode {
 	}
 
   _outlineTriangle(sequence) {
-    console.log(sequence)
     let tamanho = Math.floor(sequence.length / 3) + 2;
-    //Adiciona dois caracteres que serão invisíveis para remover as pontas
-    sequence = sequence.substr(0, tamanho - 1) + '5' + sequence.substr(tamanho - 1, tamanho - 1) + '5' + sequence.substr(((tamanho - 1) * 2), tamanho);
-    sequence += '22';
 	  let x = 0;
 	  let y = 10;
 	  let contador1 = 0;
@@ -290,14 +330,17 @@ class CGRCode {
 				x -= this.symbolMargin / 2;
       }
       
+      contador1++;
+      if (contador1 === tamanho) {
+        contador1 = 0;
+				contador2++;
+        i--;
+        continue;
+      }
+
 			this._drawSymbol(x, y, this.symbolHeight || 10, sequence[i]);
       
       this.context.stroke();
-			contador1++;
-			if (contador1 == tamanho) {
-				contador1 = 0;
-				contador2++;
-			}
 	  }
   }
 
@@ -333,5 +376,167 @@ class CGRCode {
         contador2++;
       }
     }
+  }
+}
+
+class Encoder {
+  constructor() {
+    this.URL_SHORTENER = 'https://cgrco.de/';
+
+    this.numericTable = {
+      none: '00',
+      0: '01',
+      1: '02',
+      2: '03',
+      3: '10',
+      4: '11',
+      5: '12',
+      6: '13',
+      7: '20',
+      8: '21',
+      9: '22',
+      '+': '23',
+      '-': '30',
+      '.': '31',
+      '/': '32',
+      '_': '33'
+    }
+
+    this.alphaNumericTable = {
+      0: '000',
+      1: '001',
+      2: '002',
+      3: '003',
+      4: '010',
+      5: '011',
+      6: '012',
+      7: '013',
+      '.': '020',
+      8: '021',
+      9: '022',
+      a: '023',
+      b: '030',
+      c: '031',
+      d: '032',
+      e: '033',
+      f: '100',
+      g: '101',
+      h: '102',
+      i: '103',
+      j: '110',
+      k: '111',
+      l: '112',
+      m: '113',
+      n: '120',
+      o: '121',
+      p: '122',
+      q: '123',
+      r: '130',
+      s: '131',
+      t: '132',
+      u: '133',
+      v: '200',
+      w: '201',
+      x: '202',
+      y: '203',
+      z: '210',
+      A: '211',
+      B: '212',
+      C: '213',
+      D: '220',
+      E: '221',
+      F: '222',
+      G: '223',
+      H: '230',
+      I: '231',
+      J: '232',
+      K: '233',
+      L: '300',
+      M: '301',
+      N: '302',
+      O: '303',
+      P: '310',
+      Q: '311',
+      R: '312',
+      S: '313',
+      T: '320',
+      U: '321',
+      V: '322',
+      W: '323',
+      X: '330',
+      Y: '331',
+      Z: '332',
+      '/': '333'
+    }
+  }
+
+  encode(data, urlShortener = '') {
+    if (urlShortener) {
+      this.URL_SHORTENER = urlShortener;
+    }
+
+    let codeString = '';
+    let parsedData = '';
+    if (data.toLowerCase().startsWith('http://')) {
+      codeString += '1';
+      parsedData = data.substr(7);
+    } else if (data.toLowerCase().startsWith('https://')) {
+      if (data.toLowerCase().startsWith(this.URL_SHORTENER)) {
+        codeString += '3';
+        parsedData = data.substr(this.URL_SHORTENER.length);
+      } else {
+        codeString += '2';
+        parsedData = data.substr(8);
+      }
+    } else {
+      codeString += '0';
+      parsedData = data;
+    }
+
+    if (parsedData.match(/^[0-9]+$/g)) {
+      codeString += '0';
+    } else if (parsedData.match(/^[0-9a-zA-Z\./]+$/g)) {
+      codeString += '1';
+    } else if (/[^\u0000-\u00ff]/.test(parsedData)) {
+      //Neste caso contém unicode
+      codeString += '3';
+    } else {
+      codeString += '2';
+    }
+
+    codeString += this._textToNumber(parsedData, codeString[1]);
+    
+    return codeString
+  }
+
+  _textToNumber(text, encoding) {
+    let returnString = '';
+    text = this._pad(text, encoding);
+    if (encoding === '0') {
+      for (let char of text) {
+        returnString += this.numericTable[char];
+      }
+    } else if (encoding === '1') {
+      for (let char of text) {
+        returnString += this.alphaNumericTable[char];
+      }
+    } else {
+      return text.split('').map((char) => '00'.concat(char.charCodeAt(0).toString(4)).slice(-6)).join('');
+    }
+
+    return returnString;
+  }
+
+  _pad(text, encoding) {
+    let pad = '';
+    if (encoding === '0') {
+      pad = '000000000000000';
+    } else if (encoding === '1') {
+      pad = '..........';
+    } else {
+      pad = '....';
+    }
+
+    return pad.substr(0, pad.length - text.length) + text;
   }
 }
